@@ -1,6 +1,7 @@
 import smtplib
 
-
+maildid = "swaasthik.shetty1@gmail.com"
+password = "msfanswaaz@01"
 
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
     smtp.login(maildid, password)
