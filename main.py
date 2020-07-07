@@ -1,15 +1,20 @@
 import smtplib
+import imghdr
+from email.message import EmailMessage
 
-maildid = "swaasthik.shetty1@gmail.com"
-password = "msfanswaaz@01"
+
+
+message = EmailMessage()
+message['Subject'] = 'Ssup boli!!!!!!   ' //subject
+message['From'] = maildid
+message['To'] = 'sharansk792000@gmail.com'
+message.set_content('Hello Boli!!!!!!') // message
+files = []
+
+for file in files:
+    
 
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
     smtp.login(maildid, password)
     
-    subject = "Test"
-    Body = """
-    Hello Testing!!!!
-    """
-    message = f'Subject{subject}\n\n\n{Body}'
-    
-    smtp.sendmail(maildid, maildid, message)
+    smtp.send_message(message)
