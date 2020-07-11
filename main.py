@@ -1,11 +1,15 @@
 import smtplib
 import imghdr
+import os
 from email.message import EmailMessage
 
 
 
-contacts = [maildid, 'swaasthik.shetty1@gmail.com'] 
+path = "attachments"
 
+attachment = os.listdir(path)
+    
+contacts = [maildid, 'swaasthik.shetty1@gmail.com'] 
 message = EmailMessage()
 message['Subject'] = 'Ssup boli!!!!!!   ' 
 message['From'] = maildid
@@ -18,13 +22,12 @@ message.add_alternative("""\
     <body>
     <h1 >Hello destooooo!!!!!</h1>
     </body>
-    </html>
-                        
+    </html>            
                         """, subtype='html')
 
-files = ['./attachments/1.jpg', './attachments/4.pdf']
+# files = ['./attachments/1.jpg', './attachments/4.pdf']
 
-for file in files:
+for file in attachments:
     with open(file, 'rb') as f:
         file_data = f.read()
         file_type = imghdr.what(f.name)
@@ -32,6 +35,6 @@ for file in files:
     message.add_attachment(file_data, maintype='application', subtype='octect-stream', filename= file_name)
     
 
-with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-    smtp.login(maildid, password)
-    smtp.send_message(message)
+# with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+#     smtp.login(maildid, password)
+#     smtp.send_message(message)
