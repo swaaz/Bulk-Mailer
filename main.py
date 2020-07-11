@@ -1,14 +1,21 @@
 import smtplib
 import imghdr
 import os
+import pandas as pd
 from email.message import EmailMessage
 
 
-
 path = "attachments"
+files = []
+attachments = os.listdir(path)
 
-attachment = os.listdir(path)
-    
+for file in range(len(attachments)):
+    files.append(f'{path}/{attachments[file]}')
+
+conct = pd.read_excel("contacts.xlsx")
+contacts = cont['mail id'].value
+print(files)
+
 contacts = [maildid, 'swaasthik.shetty1@gmail.com'] 
 message = EmailMessage()
 message['Subject'] = 'Ssup boli!!!!!!   ' 
@@ -27,7 +34,7 @@ message.add_alternative("""\
 
 # files = ['./attachments/1.jpg', './attachments/4.pdf']
 
-for file in attachments:
+for file in files:
     with open(file, 'rb') as f:
         file_data = f.read()
         file_type = imghdr.what(f.name)
@@ -35,6 +42,6 @@ for file in attachments:
     message.add_attachment(file_data, maintype='application', subtype='octect-stream', filename= file_name)
     
 
-# with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-#     smtp.login(maildid, password)
-#     smtp.send_message(message)
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    smtp.login(maildid, password)
+    smtp.send_message(message)
