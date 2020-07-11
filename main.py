@@ -1,11 +1,22 @@
 import smtplib
 import imghdr
+import os
+import pandas as pd
 from email.message import EmailMessage
 
 
+path = "attachments"
+files = []
+attachments = os.listdir(path)
+
+for file in range(len(attachments)):
+    files.append(f'{path}/{attachments[file]}')
+
+conct = pd.read_excel("contacts.xlsx")
+contacts = cont['mail id'].value
+print(files)
 
 contacts = [maildid, 'swaasthik.shetty1@gmail.com'] 
-
 message = EmailMessage()
 message['Subject'] = 'Ssup boli!!!!!!   ' 
 message['From'] = maildid
@@ -18,11 +29,10 @@ message.add_alternative("""\
     <body>
     <h1 >Hello destooooo!!!!!</h1>
     </body>
-    </html>
-                        
+    </html>            
                         """, subtype='html')
 
-files = ['./attachments/1.jpg', './attachments/4.pdf']
+# files = ['./attachments/1.jpg', './attachments/4.pdf']
 
 for file in files:
     with open(file, 'rb') as f:
