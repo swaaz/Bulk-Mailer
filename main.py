@@ -4,7 +4,6 @@ import os
 import pandas as pd
 from email.message import EmailMessage
 
-
 path = "attachments"
 files = []
 attachments = os.listdir(path)
@@ -12,9 +11,9 @@ attachments = os.listdir(path)
 for file in range(len(attachments)):
     files.append(f'{path}/{attachments[file]}')
 
-conct = pd.read_excel("contacts.xlsx")
-contacts = cont['mail id'].value
-print(files)
+cont = pd.read_excel("contacts.xlsx")
+contacts = cont['mail id'].values
+print(contacts)
 
 contacts = [maildid, 'swaasthik.shetty1@gmail.com'] 
 message = EmailMessage()
@@ -42,6 +41,6 @@ for file in files:
     message.add_attachment(file_data, maintype='application', subtype='octect-stream', filename= file_name)
     
 
-with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-    smtp.login(maildid, password)
-    smtp.send_message(message)
+# with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+#     smtp.login(maildid, password)
+#     smtp.send_message(message)
