@@ -1,5 +1,5 @@
 # Bulk Mailer
-## Send bulk mails all at once running Python Script
+## Send bulk mails all at once running Python Script which includes features like HTML mail, attach files and read contacts from excel.
 
 <center>
 <div>
